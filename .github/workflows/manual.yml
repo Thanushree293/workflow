@@ -17,6 +17,11 @@ on:
         required: true
         # The data type of the input
         type: string
+      age:
+        description: "Age of the person"
+        required: true
+        type: string
+       
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,3 +35,13 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
+
+  check_for_voting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checking the eligibility
+      if: ${{ fromISON(inputs.age) >= 18 }}
+      run: echo "${{ inputs.age }} is eligible to vote."
+     
+      
+    
