@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checking the eligibility
-      if: ${{ fromISON(inputs.age) >= 18 }}
+      if: ${{ fromJSON(inputs.age) >= 18 }}
       run: echo "${{ inputs.age }} is eligible to vote."
      
       
